@@ -83,6 +83,24 @@ Console.WriteLine($"Celciue: {celcius}");
 Book book = new Book("Lord of the Rings", "James Olka", 0);
 book.PrintDetails();
 
+Program program = new Program();
+program.Main();
+
+
+public partial class Program
+{
+    public static void sayHello(string name) => Console.WriteLine($"Hello, {name}");
+    public static void sayHi(string name) => Console.WriteLine($"Hi, {name}");
+    public void Main()
+    {
+        Greet greet1 = sayHello;
+        greet1("Mophat");
+        Greet gree2 = sayHi;
+        gree2("Bezyl");
+
+    }
+}
+
 
 
 public class Product
@@ -148,6 +166,9 @@ public class TemperatureConverter
 }
 
 
+public delegate void Greet(string message);
+
+
 public class BankAccount
 {
     private double balance;
@@ -171,8 +192,13 @@ public class BankAccount
     
 }
 
+public interface ILogger
+{
+    public void LoggInformation(string message);
+}
 
-public class Logger
+
+public class Logger: ILogger
 {
     public static string FilePath;
 
@@ -180,6 +206,11 @@ public class Logger
     {
         FilePath = $"/logging/log.txt";
 
+    }
+
+    public void LoggInformation(string message)
+    {
+        Console.WriteLine(message);
     }
 }
 
