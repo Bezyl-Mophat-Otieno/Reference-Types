@@ -1,6 +1,8 @@
 ﻿
 
 
+using System.Text;
+
 Person person = new Person("Bezyl Mophat Otieno", 23);
 
 person.Greet();
@@ -85,6 +87,61 @@ book.PrintDetails();
 
 Program program = new Program();
 program.Main();
+
+// String builder
+var sb = new StringBuilder("Bezyl");
+sb.Append(" Mophat");
+Console.WriteLine($"String builder {sb}");
+
+// List
+
+List<int> numbers = new () { 1, 2, 3, 4 };
+
+foreach (var number in numbers)
+{
+    Console.WriteLine($"Number {number} in List");
+}
+
+numbers.Add(5);
+numbers.Insert(0, 10);
+Console.WriteLine($"Numbers: {string.Join(',', numbers)}");
+
+// Dictionaries
+
+var countries = new Dictionary<string, string>()
+{
+    ["Kenya"] = "Nairobi",
+    ["Tanzania"] = "Dodoma"
+};
+
+string capitalCityOfKenya = countries["Kenya"];
+Console.WriteLine($"Capital city of Kenya {capitalCityOfKenya}");
+
+if (countries.TryGetValue("Tanzania", out var city))
+{
+    Console.WriteLine($"Capital city of Tanzania {city}");
+}
+
+// Queues
+
+var queue = new Queue<string>();
+queue.Enqueue("Task1");
+queue.Enqueue("Task2");
+
+Console.WriteLine($"FIFO: {queue.Dequeue()}");
+
+var stack = new Stack<string>();
+stack.Push("Task1");
+stack.Push("Task2");
+
+Console.WriteLine($"LIFO: {stack.Pop()}");
+
+// Hash sets
+
+var evenSet  = new HashSet<int>() { 1,2,3,4,5};
+evenSet.Add(10);
+Console.WriteLine($"Hashset: {string.Join(" ,", evenSet)}");
+
 
 
 public partial class Program
